@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: db_task
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    restart: always
+    networks:
+      - postgres_js
+    volumes:
+      - ./images/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=post_js
+      - POSTGRES_USER=post_js
+      - POSTGRES_DB=post_js
+
+networks:
+  postgres_js:
+    driver: bridge
